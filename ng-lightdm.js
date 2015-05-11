@@ -28,11 +28,11 @@ angular.module('ng-lightdm',[])
         $window.lightdm.start_authentication(username)
         
         $timeout(function(){
-           lightdm.provide_secret(password)
+           $window.lightdm.provide_secret(password)
         },50)
         
         $rootScope.$on('lightdm:auth:ok', function(){
-            $window.lightdm.login(LightDM.authentication_user, session)
+            $window.lightdm.login($window.lightdm.authentication_user, session)
         })
         $rootScope.$on('lightdm:auth:error', function(){
             deferred.reject('auth:error')
